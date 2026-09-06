@@ -1,0 +1,202 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  font-family: Segoe UI, Arial, sans-serif;
+  color: #3c3c3c;
+  background: #fff;
+}
+
+.ribbon {
+  margin: 10px;
+  border: 1px solid #888686;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 12px 0;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  font-size: 14px;
+  color: #121212;
+  padding: 6px 12px;
+  background: #f3d12a;
+}
+
+.count-number {
+  color: #1859da;
+  font-weight: 700;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  min-height: 42px;
+  border-top: 1px solid #6a6969;
+}
+
+.filters.expanded {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.more-box {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background-color: #1859da;
+  box-shadow: 0 2px 6px rgba(24, 89, 218, .35);
+  overflow: hidden;
+}
+
+.more-box-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .15s ease;
+}
+
+.more-box-toggle:hover {
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.more-box-icon {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.chip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 12px 12px;
+  border: 1px solid #e3e2e2;
+  min-width: 150px;
+  flex: 0 0 auto;
+}
+
+.chip:last-child {
+  border-right: none;
+}
+
+.chip-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.chip-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+}
+
+.chip-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 220px;
+  cursor: default;
+}
+
+.chip-value-text {
+  font-size: 12px;
+  color: #8a8a8a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip-value-more {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2f6fed;
+  background: #eaf1ff;
+  padding: 1px 7px;
+  border-radius: 9px;
+}
+
+.chip-tooltip {
+  position: fixed;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 16px));
+  white-space: normal;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 12.5px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .18s cubic-bezier(.4, 0, .2, 1), transform .18s cubic-bezier(.4, 0, .2, 1);
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.chip-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 14px;
+  border: 5px solid transparent;
+  border-bottom-color: #fff;
+}
+
+.chip-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.chip-tooltip.flip-up {
+  transform: translateY(6px);
+}
+
+.chip-tooltip.flip-up.visible {
+  transform: translateY(0);
+}
+
+.chip-tooltip.flip-up::after {
+  bottom: auto;
+  top: 100%;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+}
+
+.empty {
+  min-width: 220px;
+  padding: 11px;
+  text-align: center;
+  font-size: 12px;
+  color: #9a9a9a;
+}
