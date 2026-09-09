@@ -11,9 +11,9 @@ html, body {
 }
 
 .ribbon {
-  margin: 10px;
-  border: 1px solid #888686;
-  border-radius: 6px;
+  margin: 6px;
+  border: 0.8px solid #888686;
+  border-radius: 3px;
   background: #fff;
   overflow: hidden;
 }
@@ -50,7 +50,8 @@ html, body {
 }
 
 .filters.expanded {
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   overflow: visible;
 }
 
@@ -72,7 +73,7 @@ html, body {
   color: #fff;
   font: inherit;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   cursor: pointer;
   user-select: none;
@@ -95,9 +96,13 @@ html, body {
   justify-content: center;
   gap: 2px;
   padding: 8px 12px 12px;
-  border: 1px solid #e3e2e2;
+  border: 0.8px solid #e3e2e2;
   min-width: 150px;
   flex: 0 0 auto;
+}
+
+.chip.has-tooltip {
+  cursor: pointer;
 }
 
 .chip:last-child {
@@ -140,6 +145,7 @@ html, body {
   background: #eaf1ff;
   padding: 1px 7px;
   border-radius: 9px;
+  cursor: pointer;
 }
 
 .chip-tooltip {
@@ -160,6 +166,11 @@ html, body {
   transform: translateY(-6px);
   transition: opacity .18s cubic-bezier(.4, 0, .2, 1), transform .18s cubic-bezier(.4, 0, .2, 1);
   z-index: 3000;
+  user-select: text;
+  cursor: text;
+}
+
+.chip-tooltip:not(.visible) {
   pointer-events: none;
 }
 

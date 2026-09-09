@@ -85,7 +85,9 @@ function buildChip(f){
  const label=document.createElement('b');label.className='chip-label';label.textContent=f.label;
  head.append(label);
 
- chip.append(head,buildValueEl(f));
+ const value=buildValueEl(f);
+ chip.append(head,value);
+ if(value.dataset.tooltip) chip.classList.add('has-tooltip');
  return chip;
 }
 
@@ -231,20 +233,34 @@ function showTooltip(target){
  tip.classList.add('visible');
 }
 
+let activeTooltipTarget=null;
+
 function hideTooltip(){
  if(tooltipEl) tooltipEl.classList.remove('visible');
+ activeTooltipTarget=null;
+}
+
+function toggleTooltip(target){
+ if(activeTooltipTarget===target){ hideTooltip(); return; }
+ showTooltip(target);
+ activeTooltipTarget=target;
 }
 
 function initTooltipEvents(){
- box.addEventListener('mouseover',function(e){
-  const target=e.target.closest('.chip-value');
-  if(target) showTooltip(target);
- });
- box.addEventListener('mouseout',function(e){
-  const target=e.target.closest('.chip-value');
-  if(target) hideTooltip();
+ box.addEventListener('click',function(e){
+  const chip=e.target.closest('.chip');
+  if(!chip) return;
+  const target=chip.querySelector('.chip-value');
+  if(target&&target.dataset.tooltip){
+   e.stopPropagation();
+   toggleTooltip(target);
+  }
  });
  box.addEventListener('scroll',hideTooltip);
+ document.addEventListener('click',function(e){
+  if(tooltipEl&&tooltipEl.contains(e.target)) return;
+  hideTooltip();
+ });
 }
 
 function init(){
