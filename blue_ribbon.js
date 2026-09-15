@@ -40,7 +40,7 @@ async function loadDynamicParamNames(){
  }
 }
 
-const LOCAL_FIELDS_JSON_URL='./blue_ribbon_2_fields.json';
+const LOCAL_FIELDS_JSON_URL='./blue_ribbon_fields.json';
 
 async function fetchFieldsList(url){
  const res=await fetch(url);
